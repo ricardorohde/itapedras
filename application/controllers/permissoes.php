@@ -4,8 +4,8 @@ class Permissoes extends CI_Controller {
     
 
     /**
-     * author: Ramon Silva 
-     * email: silva018-mg@yahoo.com.br
+     * author: Leandro Silveira
+     * email: silveira.jedi@gmail.com
      * 
      */
     

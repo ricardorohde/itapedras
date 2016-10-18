@@ -1,9 +1,9 @@
 <?php
 class Clientes_model extends CI_Model {
 
-    /**
-     * author: Ramon Silva 
-     * email: silva018-mg@yahoo.com.br
+   /**
+     * author: Leandro Silveira
+     * email: silveira.jedi@gmail.com
      * 
      */
     

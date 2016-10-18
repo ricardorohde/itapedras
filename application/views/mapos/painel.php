@@ -16,9 +16,7 @@
         <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'vProduto')){ ?>
             <li class="bg_lg"> <a href="<?php echo base_url()?>index.php/produtos"> <i class="icon-barcode"></i> Produtos</a> </li>
         <?php } ?>
-        <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'vServico')){ ?>
-            <li class="bg_ly"> <a href="<?php echo base_url()?>index.php/servicos"> <i class="icon-wrench"></i> Serviços</a> </li>
-        <?php } ?>
+        
         <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'vOs')){ ?>
             <li class="bg_lo"> <a href="<?php echo base_url()?>index.php/os"> <i class="icon-tags"></i> OS</a> </li>
         <?php } ?>
@@ -89,7 +87,7 @@
     <div class="span12" style="margin-left: 0">
         
         <div class="widget-box">
-            <div class="widget-title"><span class="icon"><i class="icon-signal"></i></span><h5>Ordens de Serviço Em Aberto</h5></div>
+            <div class="widget-title"><span class="icon"><i class="icon-signal"></i></span><h5>Ordens de Serviço  Em Aberto</h5></div>
             <div class="widget-content">
                 <table class="table table-bordered">
                     <thead>
@@ -219,8 +217,7 @@
                         <ul class="site-stats">
                             <li class="bg_lh"><i class="icon-group"></i> <strong><?php echo $this->db->count_all('clientes');?></strong> <small>Clientes</small></li>
                             <li class="bg_lh"><i class="icon-barcode"></i> <strong><?php echo $this->db->count_all('produtos');?></strong> <small>Produtos </small></li>
-                            <li class="bg_lh"><i class="icon-tags"></i> <strong><?php echo $this->db->count_all('os');?></strong> <small>Ordens de Serviço</small></li>
-                            <li class="bg_lh"><i class="icon-wrench"></i> <strong><?php echo $this->db->count_all('servicos');?></strong> <small>Serviços</small></li>
+                            <li class="bg_lh"><i class="icon-tags"></i> <strong><?php echo $this->db->count_all('os');?></strong> <small>Ordens de Serviços</small></li>
                             
                         </ul>
                  
