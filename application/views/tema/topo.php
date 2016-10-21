@@ -59,10 +59,6 @@
         <li class="<?php if(isset($menuProdutos)){echo 'active';};?>"><a href="<?php echo base_url()?>index.php/produtos"><i class="icon icon-barcode"></i> <span>Produtos</span></a></li>
     <?php } ?>
     
-    <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'vServico')){ ?>
-        <li class="<?php if(isset($menuServicos)){echo 'active';};?>"><a href="<?php echo base_url()?>index.php/servicos"><i class="icon icon-wrench"></i> <span>Serviços</span></a></li>
-    <?php } ?>
-
     <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'vOs')){ ?>
         <li class="<?php if(isset($menuOs)){echo 'active';};?>"><a href="<?php echo base_url()?>index.php/os"><i class="icon icon-tags"></i> <span>Ordens de Serviço</span></a></li>
     <?php } ?>
@@ -96,9 +92,7 @@
             <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'rProduto')){ ?>
                 <li><a href="<?php echo base_url()?>index.php/relatorios/produtos">Produtos</a></li>
             <?php } ?>
-            <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'rServico')){ ?>
-                <li><a href="<?php echo base_url()?>index.php/relatorios/servicos">Serviços</a></li>
-            <?php } ?>
+           
             <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'rOs')){ ?>
                  <li><a href="<?php echo base_url()?>index.php/relatorios/os">Ordens de Serviço</a></li>
             <?php } ?>

@@ -67,25 +67,17 @@
                                     <div class="span12" style="padding: 1%; margin-left: 0">
 
                                         <div class="span6">
-                                            <label for="descricaoProduto">Descrição Produto/Serviço</label>
+                                            <label for="descricaoProduto">Descrição Local/Serviço</label>
                                             <textarea class="span12" name="descricaoProduto" id="descricaoProduto" cols="30" rows="5"></textarea>
                                         </div>
-                                        <div class="span6">
-                                            <label for="defeito">Defeito</label>
-                                            <textarea class="span12" name="defeito" id="defeito" cols="30" rows="5"></textarea>
-                                        </div>
-
-                                    </div>
-                                    <div class="span12" style="padding: 1%; margin-left: 0">
+                                        
                                         <div class="span6">
                                             <label for="observacoes">Observações</label>
                                             <textarea class="span12" name="observacoes" id="observacoes" cols="30" rows="5"></textarea>
                                         </div>
-                                        <div class="span6">
-                                            <label for="laudoTecnico">Laudo Técnico</label>
-                                            <textarea class="span12" name="laudoTecnico" id="laudoTecnico" cols="30" rows="5"></textarea>
-                                        </div>
+
                                     </div>
+                                    
                                     <div class="span12" style="padding: 1%; margin-left: 0">
                                         <div class="span6 offset3" style="text-align: center">
                                             <button class="btn btn-success" id="btnContinuar"><i class="icon-share-alt icon-white"></i> Continuar</button>
