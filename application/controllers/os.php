@@ -97,10 +97,8 @@ class Os extends CI_Controller {
                 'dataFinal' => $dataFinal,
                 'garantia' => set_value('garantia'),
                 'descricaoProduto' => set_value('descricaoProduto'),
-                'defeito' => set_value('defeito'),
                 'status' => set_value('status'),
                 'observacoes' => set_value('observacoes'),
-                'laudoTecnico' => set_value('laudoTecnico'),
                 'faturado' => 0
             );
 
@@ -132,10 +130,8 @@ class Os extends CI_Controller {
                 'dataFinal' => set_value('dataFinal'),
                 'garantia' => set_value('garantia'),
                 'descricaoProduto' => set_value('descricaoProduto'),
-                'defeito' => set_value('defeito'),
                 'status' => set_value('status'),
-                'observacoes' => set_value('observacoes'),
-                'laudoTecnico' => set_value('laudoTecnico')
+                'observacoes' => set_value('observacoes')
             );
 
             if ( is_numeric($id = $this->os_model->add('os', $data, true)) ) {
@@ -241,7 +237,7 @@ class Os extends CI_Controller {
         }
 
         $this->db->where('os_id', $id);
-        $this->db->delete('servicos_os');
+        $this->db->delete('servicos_os2');
 
         $this->db->where('os_id', $id);
         $this->db->delete('produtos_os');
@@ -344,11 +340,12 @@ class Os extends CI_Controller {
 
         
         $data = array(
-            'servicos_id'=> $this->input->post('idServico'),
+            'descricao'=> $this->input->post('info'),
             'os_id'=> $this->input->post('idOsServico'),
+            'totalsrv'=> $this->input->post('valorsrv'),
         );
 
-        if($this->os_model->add('servicos_os', $data) == true){
+        if($this->os_model->add('servicos_os2', $data) == true){
 
             echo json_encode(array('result'=> true));
         }else{
@@ -359,7 +356,7 @@ class Os extends CI_Controller {
 
     function excluirServico(){
             $ID = $this->input->post('idServico');
-            if($this->os_model->delete('servicos_os','idServicos_os',$ID) == true){
+            if($this->os_model->delete('servicos_os2','idServicos_os',$ID) == true){
 
                 echo json_encode(array('result'=> true));
             }

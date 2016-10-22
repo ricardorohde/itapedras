@@ -19,7 +19,7 @@
                         <li class="active" id="tabDetalhes"><a href="#tab1" data-toggle="tab">Detalhes da OS</a></li>
                         <li id="tabProdutos"><a href="#tab2" data-toggle="tab">Produtos</a></li>
                         <li id="tabServicos"><a href="#tab3" data-toggle="tab">Serviços</a></li>
-                        <li id="tabAnexos"><a href="#tab4" data-toggle="tab">Anexos</a></li>
+       
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab1">
@@ -39,7 +39,7 @@
                                             <input id="valorTotal" type="hidden" name="valorTotal" value=""  />
                                         </div>
                                         <div class="span6">
-                                            <label for="tecnico">Técnico / Responsável<span class="required">*</span></label>
+                                            <label for="tecnico">Responsável<span class="required">*</span></label>
                                             <input id="tecnico" class="span12" type="text" name="tecnico" value="<?php echo $result->nome ?>"  />
                                             <input id="usuarios_id" class="span12" type="hidden" name="usuarios_id" value="<?php echo $result->usuarios_id ?>"  />
                                         </div>
@@ -74,12 +74,12 @@
 
                                         <div class="span6">
                                             <label for="descricaoProduto">Descrição Local/Serviço</label>
-                                            <textarea class="span12" name="descricaoProduto" id="descricaoProduto" cols="30" rows="5"></textarea>
+                                            <textarea class="span12" name="descricaoProduto" id="descricaoProduto" cols="30" rows="5"><?php echo $result->descricaoProduto ?></textarea>
                                         </div>
                                         
                                         <div class="span6">
                                             <label for="observacoes">Observações</label>
-                                            <textarea class="span12" name="observacoes" id="observacoes" cols="30" rows="5"></textarea>
+                                            <textarea class="span12" name="observacoes" id="observacoes" cols="30" rows="5"><?php echo $result->observacoes ?></textarea>
                                         </div>
 
                                     </div>
@@ -162,12 +162,17 @@
                                 <div class="span12 well" style="padding: 1%; margin-left: 0">
                                     <form id="formServicos" action="<?php echo base_url() ?>index.php/os/adicionarServico" method="post">
                                     <div class="span10">
-                                        <input type="hidden" name="idServico" id="idServico" />
                                         <input type="hidden" name="idOsServico" id="idOsServico" value="<?php echo $result->idOs?>" />
-                                        <input type="hidden" name="precoServico" id="precoServico" value=""/>
-                                        <label for="">Serviço</label>
-                                        <input type="text" class="span12" name="servico" id="servico" placeholder="Digite o nome do serviço" />
                                     </div>
+                                    <div class="span7">
+                                        <label for="">Mão de Obra</label>
+                                        <input type="text" class="span12" name="info" id="info" placeholder="Digite a descrição da mão de obra" />
+                                        </div>
+                                        <div class="span2">
+                                        <label for="">Valor</label>
+                                        <input type="text" class="span12" name="valorsrv" id="valorsrv" placeholder="Valor" />
+                                        </div>
+                                        
                                     <div class="span2">
                                         <label for="">.</label>
                                         <button class="btn btn-success span12"><i class="icon-white icon-plus"></i> Adicionar</button>
@@ -187,12 +192,12 @@
                                             <?php
                                         $total = 0;
                                         foreach ($servicos as $s) {
-                                            $preco = $s->preco;
+                                            $preco = $s->totalsrv;
                                             $total = $total + $preco;
                                             echo '<tr>';
-                                            echo '<td>'.$s->nome.'</td>';
+                                            echo '<td>'.$s->descricao.'</td>';
                                             echo '<td><span idAcao="'.$s->idServicos_os.'" title="Excluir Serviço" class="btn btn-danger"><i class="icon-remove icon-white"></i></span></td>';
-                                            echo '<td>R$ '.number_format($s->preco,2,',','.').'</td>';
+                                            echo '<td>R$ '.number_format($s->totalsrv,2,',','.').'</td>';
                                             echo '</tr>';
                                         }?>
 

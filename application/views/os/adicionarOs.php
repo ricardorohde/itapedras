@@ -33,7 +33,7 @@
                                             <input id="clientes_id" class="span12" type="hidden" name="clientes_id" value=""  />
                                         </div>
                                         <div class="span6">
-                                            <label for="tecnico">Técnico / Responsável<span class="required">*</span></label>
+                                            <label for="tecnico">Responsável<span class="required">*</span></label>
                                             <input id="tecnico" class="span12" type="text" name="tecnico" value=""  />
                                             <input id="usuarios_id" class="span12" type="hidden" name="usuarios_id" value=""  />
                                         </div>
@@ -44,10 +44,7 @@
                                             <select class="span12" name="status" id="status" value="">
                                                 <option value="Orçamento">Orçamento</option>
                                                 <option value="Aberto">Aberto</option>
-                                                <option value="Em Andamento">Em Andamento</option>
-                                                <option value="Finalizado">Finalizado</option>
-                                                <option value="Cancelado">Cancelado</option>
-                                            </select>
+                                             </select>
                                         </div>
                                         <div class="span3">
                                             <label for="dataInicial">Data Inicial<span class="required">*</span></label>
