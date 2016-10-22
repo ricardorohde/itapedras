@@ -296,10 +296,12 @@ class Os extends CI_Controller {
         
         $preco = $this->input->post('preco');
         $quantidade = $this->input->post('quantidade');
-        $subtotal = $preco * $quantidade;
+        $quantidade2 = $this->input->post('quantidade2');
+        $subtotal = $preco * $quantidade * $quantidade2;
         $produto = $this->input->post('idProduto');
         $data = array(
             'quantidade'=> $quantidade,
+            'quantidade2'=> $quantidade2,
             'subTotal'=> $subtotal,
             'produtos_id'=> $produto,
             'os_id'=> $this->input->post('idOsProduto'),
@@ -307,7 +309,7 @@ class Os extends CI_Controller {
 
         if($this->os_model->add('produtos_os', $data) == true){
             $sql = "UPDATE produtos set estoque = estoque - ? WHERE idProdutos = ?";
-            $this->db->query($sql, array($quantidade, $produto));
+            $this->db->query($sql, array($quantidade, $quantidade2, $produto));
             
             echo json_encode(array('result'=> true));
         }else{
@@ -322,12 +324,13 @@ class Os extends CI_Controller {
             if($this->os_model->delete('produtos_os','idProdutos_os',$ID) == true){
                 
                 $quantidade = $this->input->post('quantidade');
+                $quantidade2 = $this->input->post('quantidade2');
                 $produto = $this->input->post('produto');
 
 
                 $sql = "UPDATE produtos set estoque = estoque + ? WHERE idProdutos = ?";
 
-                $this->db->query($sql, array($quantidade, $produto));
+                $this->db->query($sql, array($quantidade, $quantidade2, $produto));
                 
                 echo json_encode(array('result'=> true));
             }

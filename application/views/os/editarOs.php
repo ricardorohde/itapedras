@@ -112,15 +112,21 @@
                                         <label for="">Produto</label>
                                         <input type="text" class="span12" name="produto" id="produto" placeholder="Digite o nome do produto" />
                                     </div>
-                                    <div class="span2">
-                                        <label for="">Quantidade</label>
-                                        <input type="text" placeholder="Quantidade" id="quantidade" name="quantidade" class="span12" />
+                                    <div class="span1">
+                                        <label for="">Qtde1(un)</label>
+                                        <input type="text" placeholder="Qtde1" id="quantidade" name="quantidade" class="span12" />
+                                    </div>
+                                    
+                                    <div class="span1">
+                                        <label for="">Qtde2</label>
+                                        <input type="text" placeholder="Qtde2" id="quantidade2" name="quantidade2" class="span12" value="1"/>
                                     </div>
                                     <div class="span2">
                                         <label for="">.</label>
                                         <button class="btn btn-success span12" id="btnAdicionarProduto"><i class="icon-white icon-plus"></i> Adicionar</button>
                                     </div>
                                 </form>
+                               
                             </div>
                             <div class="span12" id="divProdutos" style="margin-left: 0">
                                 <table class="table table-bordered" id="tblProdutos">
@@ -140,7 +146,12 @@
                                             $total = $total + $p->subTotal;
                                             echo '<tr>';
                                             echo '<td>'.$p->descricao.'</td>';
-                                            echo '<td>'.$p->quantidade.'</td>';
+                                            if ($p->unidade == "M2"){
+                                               echo  '<td>'.$p->quantidade. ' x '.$p->quantidade2. '</td>'; 
+                                            }else{
+                                               echo '<td>'.$p->quantidade.'</td>';
+                                            }
+                                                       
                                             echo '<td><a href="" idAcao="'.$p->idProdutos_os.'" prodAcao="'.$p->idProdutos.'" quantAcao="'.$p->quantidade.'" title="Excluir Produto" class="btn btn-danger"><i class="icon-remove icon-white"></i></a></td>';
                                             echo '<td>R$ '.number_format($p->subTotal,2,',','.').'</td>';
                                             echo '</tr>';
@@ -165,8 +176,8 @@
                                         <input type="hidden" name="idOsServico" id="idOsServico" value="<?php echo $result->idOs?>" />
                                     </div>
                                     <div class="span7">
-                                        <label for="">Mão de Obra</label>
-                                        <input type="text" class="span12" name="info" id="info" placeholder="Digite a descrição da mão de obra" />
+                                        <label for="">Serviços</label>
+                                        <input type="text" class="span12" name="info" id="info" placeholder="Digite a descrição do serviço" />
                                         </div>
                                         <div class="span2">
                                         <label for="">Valor</label>
@@ -546,6 +557,7 @@ $(document).ready(function(){
                     if(data.result == true){
                         $( "#divProdutos" ).load("<?php echo current_url();?> #divProdutos" );
                         $("#quantidade").val('');
+                        $("#quantidade2").val('1');
                         $("#produto").val('').focus();
                     }
                     else{
