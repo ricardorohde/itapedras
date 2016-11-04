@@ -74,4 +74,11 @@ class Usuarios_model extends CI_Model {
 	function count($table){
 		return $this->db->count_all($table);
 	}
+        
+        public function getOsByUsuarios($id){
+        $this->db->where('usuarios_id',$id);
+        $this->db->order_by('idOs','desc');
+        $this->db->limit(10);
+        return $this->db->get('os')->result();
+    }
 }

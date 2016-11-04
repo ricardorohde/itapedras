@@ -291,5 +291,18 @@ $config = array('clientes' => array(array(
                                     'label'=>'usuarios_id',
                                     'rules'=>'trim|xss_clean|required'
                                 ))
+                ,
+                'almoxarifado' => array(array(
+
+                                    'field' => 'dataAlmox',
+                                    'label' => 'Data da Saida',
+                                    'rules' => 'required|trim|xss_clean'
+                                ),
+                                
+                                array(
+                                    'field'=>'usuarios_id',
+                                    'label'=>'usuarios_id',
+                                    'rules'=>'trim|xss_clean|required'
+                                ))
 		);
 			   

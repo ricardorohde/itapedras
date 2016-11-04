@@ -226,5 +226,26 @@ class Usuarios extends CI_Controller {
             $this->usuarios_model->delete('usuarios','idUsuarios',$ID);             
             redirect(base_url().'index.php/usuarios/gerenciar/');
     }
+    
+    public function visualizar(){
+
+        if(!$this->uri->segment(3) || !is_numeric($this->uri->segment(3))){
+            $this->session->set_flashdata('error','Item não pode ser encontrado, parâmetro não foi passado corretamente.');
+            redirect('mapos');
+        }
+
+        if(!$this->permission->checkPermission($this->session->userdata('permissao'),'vUsuarios')){
+           $this->session->set_flashdata('error','Você não tem permissão para visualizar Usuarios.');
+           redirect(base_url());
+        }
+
+        $this->data['custom_error'] = '';
+        $this->data['result'] = $this->usuarios_model->getById($this->uri->segment(3));
+        $this->data['results'] = $this->usuarios_model->getOsByUsuarios($this->uri->segment(3));
+        $this->load->view('tema/topo', $this->data);
+
+        
+    }
 }
+
 
