@@ -15,11 +15,11 @@ class Almox_model extends CI_Model {
     
     function get($table,$fields,$where='',$perpage=0,$start=0,$one=false,$array='array'){
         
-        $this->db->select($fields.', clientes.nomeCliente, clientes.idClientes');
+        $this->db->select($fields.', usuarios.nome, usuarios.idUsuarios');
         $this->db->from($table);
         $this->db->limit($perpage,$start);
-        $this->db->join('clientes', 'clientes.idClientes = '.$table.'.clientes_id');
-        $this->db->order_by('idAlmox','desc');
+        $this->db->join('usuarios', 'usuarios.idUsuarios = '.$table.'.usuarios_id');
+        $this->db->order_by('idAlmox','asc');
         if($where){
             $this->db->where($where);
         }

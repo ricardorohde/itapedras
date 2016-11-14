@@ -295,7 +295,7 @@ $config = array('clientes' => array(array(
                 'almoxarifado' => array(array(
 
                                     'field' => 'dataAlmox',
-                                    'label' => 'Data da Saida',
+                                    'label' => 'Data',
                                     'rules' => 'required|trim|xss_clean'
                                 ),
                                 

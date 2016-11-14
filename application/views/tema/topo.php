@@ -64,11 +64,9 @@
     <?php } ?>
 
     <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'vVenda')){ ?>
-        <li class="<?php if(isset($menuVendas)){echo 'active';};?>"><a href="<?php echo base_url()?>index.php/vendas"><i class="icon icon-shopping-cart"></i> <span>Vendas</span></a></li>
+        <li class="<?php if(isset($menuVendas)){echo 'active';};?>"><a href="<?php echo base_url()?>index.php/vendas"><i class="icon icon-shopping-cart"></i> <span>Vendas/Saidas</span></a></li>
     <?php } ?>
-        <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'vVenda')){ ?>
-        <li class="<?php if(isset($menuVenda)){echo 'active';};?>"><a href="<?php echo base_url()?>index.php/almoxarifado"><i class="icon icon-shopping-cart"></i> <span>Almoxarifado</span></a></li>
-    <?php } ?>
+       
     
    
 

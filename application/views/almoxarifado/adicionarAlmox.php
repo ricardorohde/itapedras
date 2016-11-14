@@ -29,7 +29,7 @@
                                     <div class="span12" style="padding: 1%">
 
                                         <div class="span2">
-                                            <label for="dataInicial">Data da Venda<span class="required">*</span></label>
+                                            <label for="data">Data<span class="required">*</span></label>
                                             <input id="dataAlmox" class="span12 datepicker" type="text" name="dataAlmox" value=""  />
                                         </div>
                                        
@@ -37,6 +37,10 @@
                                             <label for="tecnico">Vendedor<span class="required">*</span></label>
                                             <input id="tecnico" class="span12" type="text" name="tecnico" value=""  />
                                             <input id="usuarios_id" class="span12" type="hidden" name="usuarios_id" value=""  />
+                                        </div>
+                                        <div class="span5">
+                                            <label for="descricao">Descrição </label>
+                                            <textarea id="obs" class="span11" name="obs" cols="30" rows="5" value=""></textarea>
                                         </div>
                                         
                                     </div>

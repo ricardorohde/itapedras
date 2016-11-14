@@ -1,5 +1,5 @@
 <?php if($this->permission->checkPermission($this->session->userdata('permissao'),'aVenda')){ ?>
-    <a href="<?php echo base_url();?>index.php/vendas/adicionar" class="btn btn-success"><i class="icon-plus icon-white"></i> Adicionar Venda</a>
+    <a href="<?php echo base_url();?>index.php/vendas/adicionar" class="btn btn-success"><i class="icon-plus icon-white"></i> Adicionar</a>
 <?php } ?>
 
 <?php
@@ -10,7 +10,7 @@ if(!$results){?>
         <span class="icon">
             <i class="icon-tags"></i>
          </span>
-        <h5>Vendas</h5>
+        <h5>Vendas/Saidas</h5>
 
      </div>
 
@@ -21,7 +21,7 @@ if(!$results){?>
     <thead>
         <tr style="backgroud-color: #2D335B">
             <th>#</th>
-            <th>Data da Venda</th>
+            <th>Data</th>
             <th>Cliente</th>
             <th>Faturado</th>
             <th></th>
@@ -30,7 +30,7 @@ if(!$results){?>
     <tbody>
 
         <tr>
-            <td colspan="6">Nenhuma venda Cadastrada</td>
+            <td colspan="6">Nada Cadastrada</td>
         </tr>
     </tbody>
 </table>
@@ -44,7 +44,7 @@ if(!$results){?>
         <span class="icon">
             <i class="icon-tags"></i>
          </span>
-        <h5>Vendas</h5>
+        <h5>Vendas/Saídas</h5>
 
      </div>
 
@@ -55,7 +55,7 @@ if(!$results){?>
     <thead>
         <tr style="backgroud-color: #2D335B">
             <th>#</th>
-            <th>Data da Venda</th>
+            <th>Data</th>
             <th>Cliente</th>
             <th>Faturado</th>
             <th></th>

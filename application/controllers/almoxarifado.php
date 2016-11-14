@@ -96,6 +96,7 @@ class Almoxarifado extends CI_Controller {
             $data = array(
                 'dataAlmox' => $dataAlmox,
                 'clientes_id' => $this->input->post('clientes_id'),
+                'obs' => $this->input->post('obs'),
                 'usuarios_id' => $this->input->post('usuarios_id')
             );
 
@@ -130,7 +131,7 @@ class Almoxarifado extends CI_Controller {
         $this->load->library('form_validation');
         $this->data['custom_error'] = '';
 
-        if ($this->form_validation->run('vendas') == false) {
+        if ($this->form_validation->run('almoxarifado') == false) {
             $this->data['custom_error'] = (validation_errors() ? '<div class="form_error">' . validation_errors() . '</div>' : false);
         } else {
 
@@ -139,7 +140,7 @@ class Almoxarifado extends CI_Controller {
             try {
                 
                 $dataAlmox = explode('/', $dataAlmox);
-                $dataAlmox = $dataALmox[2].'-'.$dataAlmox[1].'-'.$dataALmox[0];
+                $dataAlmox = $dataAlmox[2].'-'.$dataAlmox[1].'-'.$dataAlmox[0];
 
 
             } catch (Exception $e) {
@@ -147,13 +148,12 @@ class Almoxarifado extends CI_Controller {
             }
 
             $data = array(
-                'dataAlmox' => $dataVenda,
+                'dataAlmox' => $dataAlmox,
                 'usuarios_id' => $this->input->post('usuarios_id'),
-                'clientes_id' => $this->input->post('clientes_id')
             );
 
             if ($this->almox_model->edit('almoxarifado', $data, 'idAlmox', $this->input->post('idAlmox')) == TRUE) {
-                $this->session->set_flashdata('success','Pedidi editado com sucesso!');
+                $this->session->set_flashdata('success','Pedido editado com sucesso!');
                 redirect(base_url() . 'index.php/almoxarifado/editar/'.$this->input->post('idAlmox'));
             } else {
                 $this->data['custom_error'] = '<div class="form_error"><p>Ocorreu um erro</p></div>';

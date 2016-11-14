@@ -8,14 +8,14 @@
                 <span class="icon">
                     <i class="icon-tags"></i>
                 </span>
-                <h5>Cadastro de venda</h5>
+                <h5>Cadastro</h5>
             </div>
             <div class="widget-content nopadding">
                 
 
                 <div class="span12" id="divProdutosServicos" style=" margin-left: 0">
                     <ul class="nav nav-tabs">
-                        <li class="active" id="tabDetalhes"><a href="#tab1" data-toggle="tab">Detalhes da venda</a></li>
+                        <li class="active" id="tabDetalhes"><a href="#tab1" data-toggle="tab">Detalhes</a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab1">
@@ -29,7 +29,7 @@
                                     <div class="span12" style="padding: 1%">
 
                                         <div class="span2">
-                                            <label for="dataInicial">Data da Venda<span class="required">*</span></label>
+                                            <label for="dataInicial">Data<span class="required">*</span></label>
                                             <input id="dataVenda" class="span12 datepicker" type="text" name="dataVenda" value=""  />
                                         </div>
                                         <div class="span5">
@@ -38,7 +38,7 @@
                                             <input id="clientes_id" class="span12" type="hidden" name="clientes_id" value=""  />
                                         </div>
                                         <div class="span5">
-                                            <label for="tecnico">Vendedor<span class="required">*</span></label>
+                                            <label for="tecnico">Vendedor/Retirada<span class="required">*</span></label>
                                             <input id="tecnico" class="span12" type="text" name="tecnico" value=""  />
                                             <input id="usuarios_id" class="span12" type="hidden" name="usuarios_id" value=""  />
                                         </div>

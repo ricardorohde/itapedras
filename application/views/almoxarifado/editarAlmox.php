@@ -9,36 +9,31 @@
                 <span class="icon">
                     <i class="icon-tags"></i>
                 </span>
-                <h5>Editar Venda</h5>
+                <h5>Editar</h5>
             </div>
             <div class="widget-content nopadding">
 
 
                 <div class="span12" id="divProdutosServicos" style=" margin-left: 0">
                     <ul class="nav nav-tabs">
-                        <li class="active" id="tabDetalhes"><a href="#tab1" data-toggle="tab">Detalhes da Venda</a></li>
+                        <li class="active" id="tabDetalhes"><a href="#tab1" data-toggle="tab">Detalhes</a></li>
 
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab1">
 
-                            <div class="span12" id="divEditarVenda">
+                            <div class="span12" id="divEditarAlmox">
                                 
-                                <form action="<?php echo current_url(); ?>" method="post" id="formVendas">
-                                    <?php echo form_hidden('idVendas',$result->idVendas) ?>
+                                <form action="<?php echo current_url(); ?>" method="post" id="formAlmox">
+                                    <?php echo form_hidden('idAlmox',$result->idAlmox) ?>
                                     
                                     <div class="span12" style="padding: 1%; margin-left: 0">
-                                        <h3>#Venda: <?php echo $result->idVendas ?></h3>
+                                        <h3>#Venda: <?php echo $result->idAlmox ?></h3>
                                         <div class="span2" style="margin-left: 0">
                                             <label for="dataFinal">Data Final</label>
                                             <input id="dataVenda" class="span12 datepicker" type="text" name="dataVenda" value="<?php echo date('d/m/Y', strtotime($result->dataVenda)); ?>"  />
                                         </div>
-                                        <div class="span5" >
-                                            <label for="cliente">Cliente<span class="required">*</span></label>
-                                            <input id="cliente" class="span12" type="text" name="cliente" value="<?php echo $result->nomeCliente ?>"  />
-                                            <input id="clientes_id" class="span12" type="hidden" name="clientes_id" value="<?php echo $result->clientes_id ?>"  />
-                                            <input id="valorTotal" type="hidden" name="valorTotal" value=""  />
-                                        </div>
+                                       
                                         <div class="span5">
                                             <label for="tecnico">Vendedor<span class="required">*</span></label>
                                             <input id="tecnico" class="span12" type="text" name="tecnico" value="<?php echo $result->nome ?>"  />
@@ -53,9 +48,7 @@
                                     <div class="span12" style="padding: 1%; margin-left: 0">
             
                                         <div class="span8 offset2" style="text-align: center">
-                                            <?php if($result->faturado == 0){ ?>
-                                            <a href="#modal-faturar" id="btn-faturar" role="button" data-toggle="modal" class="btn btn-success"><i class="icon-file"></i> Faturar</a>
-                                            <?php } ?>
+                                            
                                             <button class="btn btn-primary" id="btnContinuar"><i class="icon-white icon-ok"></i> Alterar</button>
                                             <a href="<?php echo base_url() ?>index.php/vendas/visualizar/<?php echo $result->idVendas; ?>" class="btn btn-inverse"><i class="icon-eye-open"></i> Visualizar Venda</a>
                                             <a href="<?php echo base_url() ?>index.php/vendas" class="btn"><i class="icon-arrow-left"></i> Voltar</a>
@@ -67,12 +60,11 @@
                                 
                                 <div class="span12 well" style="padding: 1%; margin-left: 0">
                                         
-                                        <form id="formProdutos" action="<?php echo base_url(); ?>index.php/vendas/adicionarProduto" method="post">
+                                        <form id="formProdutos" action="<?php echo base_url(); ?>index.php/almoxarifado/adicionarProduto" method="post">
                                             <div class="span8">
                                                 <input type="hidden" name="idProduto" id="idProduto" />
                                                 <input type="hidden" name="idVendasProduto" id="idVendasProduto" value="<?php echo $result->idVendas?>" />
                                                 <input type="hidden" name="estoque" id="estoque" value=""/>
-                                                <input type="hidden" name="preco" id="preco" value=""/>
                                                 <label for="">Produto</label>
                                                 <input type="text" class="span12" name="produto" id="produto" placeholder="Digite o nome do produto" />
                                             </div>
@@ -141,77 +133,7 @@
 </div>
 
 
-<!-- Modal Faturar-->
-<div id="modal-faturar" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-<form id="formFaturar" action="<?php echo current_url() ?>" method="post">
-<div class="modal-header">
-  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-  <h3 id="myModalLabel">Faturar Venda</h3>
-</div>
-<div class="modal-body">
-    
-    <div class="span12 alert alert-info" style="margin-left: 0"> Obrigatório o preenchimento dos campos com asterisco.</div>
-    <div class="span12" style="margin-left: 0"> 
-      <label for="descricao">Descrição</label>
-      <input class="span12" id="descricao" type="text" name="descricao" value="Fatura de Venda - #<?php echo $result->idVendas; ?> "  />
-      
-    </div>  
-    <div class="span12" style="margin-left: 0"> 
-      <div class="span12" style="margin-left: 0"> 
-        <label for="cliente">Cliente*</label>
-        <input class="span12" id="cliente" type="text" name="cliente" value="<?php echo $result->nomeCliente ?>" />
-        <input type="hidden" name="clientes_id" id="clientes_id" value="<?php echo $result->clientes_id ?>">
-        <input type="hidden" name="vendas_id" id="vendas_id" value="<?php echo $result->idVendas; ?>">
-      </div>
-      
-      
-    </div>
-    <div class="span12" style="margin-left: 0"> 
-      <div class="span4" style="margin-left: 0">  
-        <label for="valor">Valor*</label>
-        <input type="hidden" id="tipo" name="tipo" value="receita" /> 
-        <input class="span12 money" id="valor" type="text" name="valor" value="<?php echo number_format($total,2); ?> "  />
-      </div>
-      <div class="span4" >
-        <label for="vencimento">Data Vencimento*</label>
-        <input class="span12 datepicker" id="vencimento" type="text" name="vencimento"  />
-      </div>
-      
-    </div>
-    
-    <div class="span12" style="margin-left: 0"> 
-      <div class="span4" style="margin-left: 0">
-        <label for="recebido">Recebido?</label>
-        &nbsp &nbsp &nbsp &nbsp<input  id="recebido" type="checkbox" name="recebido" value="1" /> 
-      </div>
-      <div id="divRecebimento" class="span8" style=" display: none">
-        <div class="span6">
-          <label for="recebimento">Data Recebimento</label>
-          <input class="span12 datepicker" id="recebimento" type="text" name="recebimento" /> 
-        </div>
-        <div class="span6">
-          <label for="formaPgto">Forma Pgto</label>
-          <select name="formaPgto" id="formaPgto" class="span12">
-            <option value="Dinheiro">Dinheiro</option>
-            <option value="Cartão de Crédito">Cartão de Crédito</option>
-            <option value="Cheque">Cheque</option>
-            <option value="Boleto">Boleto</option>
-            <option value="Depósito">Depósito</option>
-            <option value="Débito">Débito</option>        
-          </select>
-        </div>
-      </div>
-      
-    </div>
-    
-    
-</div>
-<div class="modal-footer">
-  <button class="btn" data-dismiss="modal" aria-hidden="true" id="btn-cancelar-faturar">Cancelar</button>
-  <button class="btn btn-primary">Faturar</button>
-</div>
-</form>
-</div>
+
  
 
 <script type="text/javascript" src="<?php echo base_url()?>js/jquery.validate.js"></script>
@@ -317,14 +239,12 @@ $(document).ready(function(){
 
 
 
-      $("#formVendas").validate({
+      $("#formAlmox").validate({
           rules:{
-             cliente: {required:true},
              tecnico: {required:true},
              dataVenda: {required:true}
           },
           messages:{
-             cliente: {required: 'Campo Requerido.'},
              tecnico: {required: 'Campo Requerido.'},
              dataVenda: {required: 'Campo Requerido.'}
           },
