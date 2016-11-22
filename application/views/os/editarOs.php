@@ -104,7 +104,7 @@
                         <div class="tab-pane" id="tab2">
                             <div class="span12 well" style="padding: 1%; margin-left: 0">
                                 <form id="formProdutos" action="<?php echo base_url() ?>index.php/os/adicionarProduto" method="post">
-                                    <div class="span8">
+                                    <div class="span12">
                                         <input type="hidden" name="idProduto" id="idProduto" />
                                         <input type="hidden" name="idOsProduto" id="idOsProduto" value="<?php echo $result->idOs?>" />
                                         <input type="hidden" name="estoque" id="estoque" value=""/>
@@ -113,14 +113,43 @@
                                         <input type="text" class="span12" name="produto" id="produto" placeholder="Digite o nome do produto" />
                                     </div>
                                     <div class="span1">
-                                        <label for="">Qtde1(un)</label>
+                                        <label for="">Un</label>
                                         <input type="text" placeholder="Qtde1" id="quantidade" name="quantidade" class="span12" />
+                                    </div>
+                                    <div class="span1">
+                                        <label for="">Espelho</label>
+                                        <input type="text" placeholder="espelho1" id="espelho1" name="espelho1" class="span12" value="0"/>
+                                    </div>
+                                     <div class="span1">
+                                        <label for="">Saia</label>
+                                        <input type="text" placeholder="saia1" id="saia1" name="saia1" class="span12" value="0"/>
+                                    </div>
+                                     <div class="span1">
+                                        <label for="">Estreit</label>
+                                        <input type="text" placeholder="estreitamento1" id="estreitamento1" name="estreitamento1" class="span12" value="0"/>
+                                    </div>
+                                   
+                                    <div class="span1">
+                                        <label for="">Comp</label>
+                                        <input type="text" placeholder="Qtde2" id="quantidade2" name="quantidade2" class="span12" value="1"/>
                                     </div>
                                     
                                     <div class="span1">
-                                        <label for="">Qtde2</label>
-                                        <input type="text" placeholder="Qtde2" id="quantidade2" name="quantidade2" class="span12" value="1"/>
+                                        <label for="">Espelho</label>
+                                        <input type="text" placeholder="espelho2" id="espelho2" name="espelho2" class="span12" value="0"/>
                                     </div>
+                                     <div class="span1">
+                                        <label for="">Saia</label>
+                                        <input type="text" placeholder="saia2" id="saia2" name="saia2" class="span12" value="0"/>
+                                    </div>
+                                     <div class="span1">
+                                        <label for="">Estreit</label>
+                                        <input type="text" placeholder="estreitamento2" id="estreitamento2" name="estreitamento2" class="span12" value="0"/>
+                                    </div>
+                                   
+                                                                    
+                                    
+                                    
                                     <div class="span2">
                                         <label for="">.</label>
                                         <button class="btn btn-success span12" id="btnAdicionarProduto"><i class="icon-white icon-plus"></i> Adicionar</button>
@@ -558,6 +587,12 @@ $(document).ready(function(){
                         $( "#divProdutos" ).load("<?php echo current_url();?> #divProdutos" );
                         $("#quantidade").val('');
                         $("#quantidade2").val('1');
+                        $("#espelho1").val('0');
+                        $("#saia1").val('0');
+                        $("#estreitamento1").val('0');
+                        $("#espelho2").val('0');
+                        $("#saia2").val('0');
+                        $("#estreitamento2").val('0');                        
                         $("#produto").val('').focus();
                     }
                     else{

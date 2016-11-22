@@ -297,11 +297,23 @@ class Os extends CI_Controller {
         $preco = $this->input->post('preco');
         $quantidade = $this->input->post('quantidade');
         $quantidade2 = $this->input->post('quantidade2');
-        $subtotal = $preco * $quantidade * $quantidade2;
+        $espelho1 = $this->input->post('espelho1');
+        $espelho2 = $this->input->post('espelho2');
+        $saia1 = $this->input->post('saia1');
+        $saia2 = $this->input->post('saia2');
+        $estreitamento1 = $this->input->post('estreitamento1');
+        $estreitamento2 = $this->input->post('estreitamento2');
+        $subtotal = $preco * ($quantidade + $espelho1 + $saia1 + $estreitamento1) * ($quantidade2 + $espelho2 + $saia2 + $estreitamento2);
         $produto = $this->input->post('idProduto');
         $data = array(
             'quantidade'=> $quantidade,
             'quantidade2'=> $quantidade2,
+            'espelho1'=> $espelho1,
+            'espelho2'=> $espelho2,
+            'saia1'=> $saia1,
+            'saia2'=> $saia2,
+            'estreitamento1'=> $estreitamento1,
+            'estreitamento2'=> $estreitamento2,
             'subTotal'=> $subtotal,
             'produtos_id'=> $produto,
             'os_id'=> $this->input->post('idOsProduto'),
@@ -309,7 +321,7 @@ class Os extends CI_Controller {
 
         if($this->os_model->add('produtos_os', $data) == true){
             $sql = "UPDATE produtos set estoque = estoque - ? WHERE idProdutos = ?";
-            $this->db->query($sql, array($quantidade, $quantidade2, $produto));
+            $this->db->query($sql, array($quantidade, $quantidade2, $espelho1, $espelho2, $saia1, $saia2, $estreitamento1, $estreitamento2, $produto));
             
             echo json_encode(array('result'=> true));
         }else{
@@ -325,12 +337,18 @@ class Os extends CI_Controller {
                 
                 $quantidade = $this->input->post('quantidade');
                 $quantidade2 = $this->input->post('quantidade2');
+                $espelho1 = $this->input->post('espelho1');
+                $espelho2 = $this->input->post('espelho2');
+                $saia1 = $this->input->post('saia1');
+                $saia2 = $this->input->post('saia2');
+                $estreitamento1 = $this->input->post('estreitamento1');
+                $estreitamento2 = $this->input->post('estreitamento2');
                 $produto = $this->input->post('produto');
 
 
                 $sql = "UPDATE produtos set estoque = estoque + ? WHERE idProdutos = ?";
 
-                $this->db->query($sql, array($quantidade, $quantidade2, $produto));
+                $this->db->query($sql, array($quantidade, $quantidade2, $produto, $espelho1, $espelho2, $saia1, $saia2, $estreitamento1, $estreitamento2));
                 
                 echo json_encode(array('result'=> true));
             }
