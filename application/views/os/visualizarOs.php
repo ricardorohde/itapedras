@@ -29,8 +29,8 @@
                                 <?php } else {?>
                                 <tr>
                                     <td style="width: 25%"><img src=" <?php echo $emitente[0]->url_logo; ?> "></td>
-                                    <td> <span style="font-size: 20px; "> <?php echo $emitente[0]->nome; ?></span> </br><span><?php echo $emitente[0]->cnpj; ?> </br> <?php echo $emitente[0]->rua.', nº:'.$emitente[0]->numero.', '.$emitente[0]->bairro.' - '.$emitente[0]->cidade.' - '.$emitente[0]->uf; ?> </span> </br> <span> E-mail: <?php echo $emitente[0]->email.' - Fone: '.$emitente[0]->telefone; ?></span></td>
-                                    <td style="width: 18%; text-align: center">#Protocolo: <span ><?php echo $result->idOs?></span></br> </br> <span>Emissão: <?php echo date('d/m/Y')?></span></td>
+                                    <td> <span> <?php echo $emitente[0]->nome; ?></span> </br><span><?php echo $emitente[0]->cnpj; ?> </br> <?php echo $emitente[0]->rua.', nº:'.$emitente[0]->numero.', '.$emitente[0]->bairro.' - '.$emitente[0]->cidade.' - '.$emitente[0]->uf; ?> </span> </br> <span> E-mail: <?php echo $emitente[0]->email.' - Fone: '.$emitente[0]->telefone; ?></span></td>
+                                    <td style="width: 18%; text-align: center">#Protocolo: <span ><?php echo $result->idOs?> <?php if($result->status == 'Orçamento'){?> - ORÇAMENTO <?php }?></span></br> </br> <span>Emissão: <?php echo date('d/m/Y')?></span> </td>
                                 </tr>
 
                                 <?php } ?>
@@ -41,23 +41,32 @@
                         <table class="table">
                             <tbody>
                                 <tr>
-                                    <td style="width: 50%; padding-left: 0">
+                                    <td style="width: 33%; padding-left: 0">
                                         <ul>
                                             <li>
-                                                <span><h5>Cliente</h5>
-                                                <span><?php echo $result->nomeCliente?></span><br/>
-                                                <span><?php echo $result->rua?>, <?php echo $result->numero?>, <?php echo $result->bairro?></span><br/>
-                                                <span><?php echo $result->cidade?> - <?php echo $result->estado?></span>
+                                                <span ><h5>Cliente</h5>
+                                                <span style="font-size: 14px;><?php echo $result->nomeCliente?></span><br/>
+                                                <span style="font-size: 14px;><?php echo $result->rua?>, <?php echo $result->numero?>, <?php echo $result->bairro?></span><br/>
+                                                <span style="font-size: 14px;><?php echo $result->cidade?> - <?php echo $result->estado?></span></br>
+                                                <span style="font-size: 14px;>DESCRIÇÃO: <?php echo $result->descricaoProduto?></span>
                                             </li>
                                         </ul>
                                     </td>
-                                    <td style="width: 50%; padding-left: 0">
+                                    <td style="width: 33%; padding-left: 0">
                                         <ul>
                                             <li>
                                                 <span><h5>Responsável</h5></span>
                                                 <span><?php echo $result->nome?></span> <br/>
                                                 <span>Telefone: <?php echo $result->telefone?></span><br/>
                                                 <span>Email: <?php echo $result->email?></span>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                    <td style="width: 33%; padding-left: 0">
+                                        <ul>
+                                            <li>
+                                                <span><h5>Prazo de Entrega:</h5></span>
+                                                <span><?php echo date(('d/m/Y'),strtotime($result->dataFinal)) ?></span>
                                             </li>
                                         </ul>
                                     </td>
@@ -69,14 +78,7 @@
 
                     <div style="margin-top: 0; padding-top: 0">
 
-                    <?php if($result->descricaoProduto != null){?>
-                    <hr style="margin-top: 0">
-                    <h5>Descrição</h5>
-                    <p>
-                        <?php echo $result->descricaoProduto?>
-                        
-                    </p>
-                    <?php }?>
+                   
 
                     <?php if($result->defeito != null){?>
                     <hr style="margin-top: 0">
@@ -168,6 +170,11 @@
                         <h4 style="text-align: right">Valor Total: R$ <?php echo number_format($totalProdutos + $totalServico,2,',','.');?></h4>
 
                     </div>
+                   
+                    <h5 style="text-align: right" >Condições de Pagamento: 1/30/60/90 ou 5% à vista</h5>
+                    </br>
+                    <h5 style="text-align: center" >Granitos, Mármores e Pedras em geral por sua própria natureza estão sujeitos a variações de cores, veios e desenhos, não podendo ser recusados pelas diferenças naturais</h5>
+
             
 
                     

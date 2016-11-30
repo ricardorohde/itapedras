@@ -183,10 +183,8 @@ class Os extends CI_Controller {
                 'dataFinal' => $dataFinal,
                 'garantia' => $this->input->post('garantia'),
                 'descricaoProduto' => $this->input->post('descricaoProduto'),
-                'defeito' => $this->input->post('defeito'),
                 'status' => $this->input->post('status'),
                 'observacoes' => $this->input->post('observacoes'),
-                'laudoTecnico' => $this->input->post('laudoTecnico'),
                 'usuarios_id' => $this->input->post('usuarios_id'),
                 'clientes_id' => $this->input->post('clientes_id')
             );
