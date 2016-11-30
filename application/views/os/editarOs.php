@@ -113,20 +113,20 @@
                                         <input type="text" class="span12" name="produto" id="produto" placeholder="Digite o nome do produto" />
                                     </div>
                                     <div class="span1">
-                                        <label for="">Un</label>
+                                        <label for="">Lar (Un)</label>
                                         <input type="text" placeholder="Qtde1" id="quantidade" name="quantidade" class="span12" />
                                     </div>
                                     <div class="span1">
-                                        <label for="">Espelho</label>
-                                        <input type="text" placeholder="espelho1" id="espelho1" name="espelho1" class="span12" value="0"/>
+                                        <label for="">Espelho(C)</label>
+                                        <input type="text" placeholder="espelho2" id="espelho2" name="espelho2" class="span12" value="0"/>
                                     </div>
                                      <div class="span1">
-                                        <label for="">Saia</label>
-                                        <input type="text" placeholder="saia1" id="saia1" name="saia1" class="span12" value="0"/>
+                                        <label for="">Saia(C)</label>
+                                        <input type="text" placeholder="saia2" id="saia2" name="saia2" class="span12" value="0"/>
                                     </div>
                                      <div class="span1">
-                                        <label for="">Estreit</label>
-                                        <input type="text" placeholder="estreitamento1" id="estreitamento1" name="estreitamento1" class="span12" value="0"/>
+                                        <label for="">Estreit(C)</label>
+                                        <input type="text" placeholder="estreitamento2" id="estreitamento2" name="estreitamento2" class="span12" value="0"/>
                                     </div>
                                    
                                     <div class="span1">
@@ -134,21 +134,23 @@
                                         <input type="text" placeholder="Qtde2" id="quantidade2" name="quantidade2" class="span12" value="1"/>
                                     </div>
                                     
-                                    <div class="span1">
-                                        <label for="">Espelho</label>
-                                        <input type="text" placeholder="espelho2" id="espelho2" name="espelho2" class="span12" value="0"/>
+                                     <div class="span1">
+                                        <label for="">Espelho(L)</label>
+                                        <input type="text" placeholder="espelho1" id="espelho1" name="espelho1" class="span12" value="0"/>
                                     </div>
                                      <div class="span1">
-                                        <label for="">Saia</label>
-                                        <input type="text" placeholder="saia2" id="saia2" name="saia2" class="span12" value="0"/>
+                                        <label for="">Saia(L)</label>
+                                        <input type="text" placeholder="saia1" id="saia1" name="saia1" class="span12" value="0"/>
                                     </div>
                                      <div class="span1">
-                                        <label for="">Estreit</label>
-                                        <input type="text" placeholder="estreitamento2" id="estreitamento2" name="estreitamento2" class="span12" value="0"/>
+                                        <label for="">Estreit(L)</label>
+                                        <input type="text" placeholder="estreitamento1" id="estreitamento1" name="estreitamento1" class="span12" value="0"/>
+                                    </div>
+                                    <div class="span6">
+                                        <label for="">Descrição Peça</label>
+                                        <input type="text" class="span12" name="descp" id="descp" name="descp" placeholder="Digite a descrição da peça" />
                                     </div>
                                    
-                                                                    
-                                    
                                     
                                     <div class="span2">
                                         <label for="">.</label>
@@ -174,7 +176,7 @@
                                             
                                             $total = $total + $p->subTotal;
                                             echo '<tr>';
-                                            echo '<td>'.$p->descricao.'</td>';
+                                            echo '<td>'.$p->descricao.' - '.$p->descp. '</td>';
                                             if ($p->unidade == "M2"){
                                                echo  '<td>'.$p->quantidade. ' x '.$p->quantidade2. '</td>'; 
                                             }else{
@@ -592,7 +594,8 @@ $(document).ready(function(){
                         $("#estreitamento1").val('0');
                         $("#espelho2").val('0');
                         $("#saia2").val('0');
-                        $("#estreitamento2").val('0');                        
+                        $("#estreitamento2").val('0'); 
+                        $("#descp").val('');
                         $("#produto").val('').focus();
                     }
                     else{

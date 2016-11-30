@@ -117,8 +117,12 @@
 
                                             $totalProdutos = $totalProdutos + $p->subTotal;
                                             echo '<tr>';
-                                            echo '<td>'.$p->descricao.'</td>';
-                                            echo '<td>'.$p->quantidade.'</td>';
+                                            echo '<td>'.$p->descricao.' - '.$p->descp. '</td>';
+                                            if ($p->unidade == "M2"){
+                                               echo  '<td>'.$p->quantidade. ' x '.$p->quantidade2. '</td>'; 
+                                            }else{
+                                               echo '<td>'.$p->quantidade.'</td>';
+                                            }
                                             
                                             echo '<td>R$ '.number_format($p->subTotal,2,',','.').'</td>';
                                             echo '</tr>';
@@ -144,11 +148,11 @@
                                             <?php
                                         setlocale(LC_MONETARY, 'en_US');
                                         foreach ($servicos as $s) {
-                                            $preco = $s->preco;
+                                            $preco = $s->totalsrv;
                                             $totalServico = $totalServico + $preco;
                                             echo '<tr>';
-                                            echo '<td>'.$s->nome.'</td>';
-                                            echo '<td>R$ '.number_format($s->preco, 2, ',', '.').'</td>';
+                                            echo '<td>'.$s->descricao.'</td>';
+                                            echo '<td>R$ '.number_format($s->totalsrv, 2, ',', '.').'</td>';
                                             echo '</tr>';
                                         }?>
 
