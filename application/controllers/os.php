@@ -321,7 +321,7 @@ class Os extends CI_Controller {
 
         if($this->os_model->add('produtos_os', $data) == true){
             $sql = "UPDATE produtos set estoque = estoque - ? WHERE idProdutos = ?";
-            $this->db->query($sql, array($quantidade, $quantidade2, $espelho1, $espelho2, $saia1, $saia2, $estreitamento1, $estreitamento2, $descp, $produto));
+            $this->db->query($sql, array($quantidade, $produto));
             
             echo json_encode(array('result'=> true));
         }else{
@@ -349,7 +349,7 @@ class Os extends CI_Controller {
 
                 $sql = "UPDATE produtos set estoque = estoque + ? WHERE idProdutos = ?";
 
-                $this->db->query($sql, array($quantidade, $quantidade2, $produto, $espelho1, $espelho2, $saia1, $saia2, $estreitamento1, $estreitamento2, $descp));
+                $this->db->query($sql, array($quantidade, $produto));
                 
                 echo json_encode(array('result'=> true));
             }

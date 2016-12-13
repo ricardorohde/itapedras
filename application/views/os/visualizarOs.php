@@ -45,10 +45,10 @@
                                         <ul>
                                             <li>
                                                 <span ><h5>Cliente</h5>
-                                                <span style="font-size: 14px;><?php echo $result->nomeCliente?></span><br/>
-                                                <span style="font-size: 14px;><?php echo $result->rua?>, <?php echo $result->numero?>, <?php echo $result->bairro?></span><br/>
-                                                <span style="font-size: 14px;><?php echo $result->cidade?> - <?php echo $result->estado?></span></br>
-                                                <span style="font-size: 14px;>DESCRIÇÃO: <?php echo $result->descricaoProduto?></span>
+                                                <span><?php echo $result->nomeCliente;?> - <?php echo $result->celular;?></span><br/>
+                                                <span><?php echo $result->rua?>, <?php echo $result->numero?>, <?php echo $result->bairro?></span><br/>
+                                                <span ><?php echo $result->cidade?> - <?php echo $result->estado?></span></br>
+                                                <span>DESCRIÇÃO: <?php echo $result->descricaoProduto?></span>
                                             </li>
                                         </ul>
                                     </td>
@@ -107,9 +107,8 @@
                         <table class="table table-bordered" id="tblProdutos">
                                     <thead>
                                         <tr>
-                                            <th>Produto</th>
-                                            <th>Quantidade</th>
-                                            <th>Sub-total</th>
+                                            <th>Descriçao</th>
+                                            <th>Dimensões / Quantidade</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -117,55 +116,40 @@
                                         
                                         foreach ($produtos as $p) {
 
+                                            $frontao = (($p->espelho1 + $p->espelho2)-$p->espelho1)*100;
                                             $totalProdutos = $totalProdutos + $p->subTotal;
                                             echo '<tr>';
-                                            echo '<td>'.$p->descricao.' - '.$p->descp. '</td>';
+                                            
                                             if ($p->unidade == "M2"){
-                                               echo  '<td>'.$p->quantidade. ' x '.$p->quantidade2. '</td>'; 
+                                                echo '<td>'.$p->descricao.' - '.$p->descp;
+                                                echo '<br>Frontão de '.$frontao.' cm</td>';
+                                               echo  '<td>'.$p->quantidade. ' x '.$p->quantidade2.'</td>';; 
                                             }else{
+                                               echo '<td>'.$p->descricao.'</td>';
                                                echo '<td>'.$p->quantidade.'</td>';
                                             }
                                             
-                                            echo '<td>R$ '.number_format($p->subTotal,2,',','.').'</td>';
-                                            echo '</tr>';
-                                        }?>
-
-                                        <tr>
-                                            <td colspan="2" style="text-align: right"><strong>Total:</strong></td>
-                                            <td><strong>R$ <?php echo number_format($totalProdutos,2,',','.');?></strong></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                               <?php }?>
-                        
-                        <?php if($servicos != null){?>
-                        <table class="table table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th>Serviço</th>
-                                                <th>Sub-total</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
+                                        }
                                         setlocale(LC_MONETARY, 'en_US');
                                         foreach ($servicos as $s) {
                                             $preco = $s->totalsrv;
                                             $totalServico = $totalServico + $preco;
                                             echo '<tr>';
                                             echo '<td>'.$s->descricao.'</td>';
-                                            echo '<td>R$ '.number_format($s->totalsrv, 2, ',', '.').'</td>';
+                                            echo '<td>'.'-'.'</td>';
                                             echo '</tr>';
-                                        }?>
+                                        }
+                                        
+                                        ?>
+                                      
 
-                                        <tr>
-                                            <td colspan="1" style="text-align: right"><strong>Total:</strong></td>
-                                            <td><strong>R$ <?php  echo number_format($totalServico, 2, ',', '.');?></strong></td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                        <?php }?>
-                        <hr />
+                                        
+                                    </tbody>
+                                </table>
+                               <?php }?>
+                        
+                                   
+                                        
                     
                         <h4 style="text-align: right">Valor Total: R$ <?php echo number_format($totalProdutos + $totalServico,2,',','.');?></h4>
 
