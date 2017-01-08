@@ -144,8 +144,9 @@
             mywindow.document.write(data);
             mywindow.document.write('</body></html>');
 
-            mywindow.print();
-            mywindow.close();
+            setTimeout(function(){
+                mywindow.print();
+            }, 50);
 
             return true;
         }
