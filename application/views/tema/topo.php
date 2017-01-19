@@ -161,7 +161,7 @@
 </div>
 <!--Footer-part-->
 <div class="row-fluid">
-  <div id="footer" class="span12"> 2016 &copy; Sistema Itapedras - Versão 1.0</div>
+  <div id="footer" class="span12"> 2016 &copy; Sistema Itapedras - Versão 1.2</div>
 </div>
 <!--end-Footer-part-->
 

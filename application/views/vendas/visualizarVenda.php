@@ -66,7 +66,15 @@
                         </table> 
       
                     </div>
-
+                    <div style="margin-top: 0; padding-top: 0">
+                    <?php if($result->obs != null){?>
+                    <hr style="margin-top: 0">
+                    <h5><b><font color = "red">Observações</b></h5>
+                    <p>
+                        <?php echo $result->obs?>
+                    </p></font>
+                    <?php }?>
+                                        </div>
                     <div style="margin-top: 0; padding-top: 0">
 
 
@@ -76,7 +84,9 @@
                                     <thead>
                                         <tr>
                                             <th style="font-size: 15px">Produto</th>
+                                            <th style="font-size: 15px">Valor Unit.</th>
                                             <th style="font-size: 15px">Quantidade</th>
+                                            <th style="font-size: 15px">Unidade</th>
                                             <th style="font-size: 15px">Sub-total</th>
                                         </tr>
                                     </thead>
@@ -88,14 +98,16 @@
                                             $totalProdutos = $totalProdutos + $p->subTotal;
                                             echo '<tr>';
                                             echo '<td>'.$p->descricao.'</td>';
+                                            echo '<td>'.$p->precoVenda.'</td>';
                                             echo '<td>'.$p->quantidade.'</td>';
+                                            echo '<td>'.$p->unidade.'</td>';
                                             
                                             echo '<td>R$ '.number_format($p->subTotal,2,',','.').'</td>';
                                             echo '</tr>';
                                         }?>
 
                                         <tr>
-                                            <td colspan="2" style="text-align: right"><strong>Total:</strong></td>
+                                            <td colspan="4" style="text-align: right"><strong>Total:</strong></td>
                                             <td><strong>R$ <?php echo number_format($totalProdutos,2,',','.');?></strong></td>
                                         </tr>
                                     </tbody>

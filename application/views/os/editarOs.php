@@ -125,7 +125,7 @@
                                         <input type="text" placeholder="saia2" id="saia2" name="saia2" class="span12" value="0"/>
                                     </div>
                                      <div class="span1">
-                                        <label for="">Estreit(C)</label>
+                                        <label for="">Fecham(C)</label>
                                         <input type="text" placeholder="estreitamento2" id="estreitamento2" name="estreitamento2" class="span12" value="0"/>
                                     </div>
                                    
@@ -143,7 +143,7 @@
                                         <input type="text" placeholder="saia1" id="saia1" name="saia1" class="span12" value="0"/>
                                     </div>
                                      <div class="span1">
-                                        <label for="">Estreit(L)</label>
+                                        <label for="">Fecham(L)</label>
                                         <input type="text" placeholder="estreitamento1" id="estreitamento1" name="estreitamento1" class="span12" value="0"/>
                                     </div>
                                     <div class="span6">
@@ -175,12 +175,13 @@
                                         foreach ($produtos as $p) {
                                             
                                             $frontao = (($p->espelho1 + $p->espelho2)-$p->espelho1)*100;
+                                            $saia = (($p->saia1 + $p->saia2)-$p->saia1)*100;
                                             $total = $total + $p->subTotal;
                                             echo '<tr>';
                                             
                                             if ($p->unidade == "M2"){
                                                 echo '<td>'.$p->descricao.' - '.$p->descp;
-                                                echo '<br>Frontão de '.$frontao.' cm</td>';
+                                                echo '<br>Frontão de '.$frontao.' cm<br>Saia de '.$saia.' cm</td>';
                                                echo  '<td>'.$p->quantidade. ' x '.$p->quantidade2.'</td>';; 
                                             }else{
                                                echo '<td>'.$p->descricao.'</td>';

@@ -97,6 +97,7 @@ class Vendas extends CI_Controller {
                 'dataVenda' => $dataVenda,
                 'clientes_id' => $this->input->post('clientes_id'),
                 'usuarios_id' => $this->input->post('usuarios_id'),
+                'obs' => $this->input->post('obs'),
                 'faturado' => 0
             );
 
@@ -150,7 +151,8 @@ class Vendas extends CI_Controller {
             $data = array(
                 'dataVenda' => $dataVenda,
                 'usuarios_id' => $this->input->post('usuarios_id'),
-                'clientes_id' => $this->input->post('clientes_id')
+                'clientes_id' => $this->input->post('clientes_id'),
+                'obs' => $this->input->post('obs')
             );
 
             if ($this->vendas_model->edit('vendas', $data, 'idVendas', $this->input->post('idVendas')) == TRUE) {

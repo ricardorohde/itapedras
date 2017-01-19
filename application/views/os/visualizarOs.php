@@ -76,7 +76,6 @@
       
                     </div>
 
-                    <div style="margin-top: 0; padding-top: 0">
 
                    
 
@@ -96,10 +95,10 @@
                     <?php }?>
                     <?php if($result->observacoes != null){?>
                     <hr style="margin-top: 0">
-                    <h5>Observações</h5>
+                    <h5><b><font color = "red">Observações</b></h5>
                     <p>
                         <?php echo $result->observacoes?>
-                    </p>
+                    </p></font>
                     <?php }?>
 
                         <?php if($produtos != null){?>
@@ -117,12 +116,13 @@
                                         foreach ($produtos as $p) {
 
                                             $frontao = (($p->espelho1 + $p->espelho2)-$p->espelho1)*100;
+                                            $saia = (($p->saia1 + $p->saia2)-$p->saia1)*100;
                                             $totalProdutos = $totalProdutos + $p->subTotal;
                                             echo '<tr>';
                                             
                                             if ($p->unidade == "M2"){
                                                 echo '<td>'.$p->descricao.' - '.$p->descp;
-                                                echo '<br>Frontão de '.$frontao.' cm</td>';
+                                                echo '<br>Frontão de '.$frontao.' cm<br>Saia de '.$saia.' cm</td>';
                                                echo  '<td>'.$p->quantidade. ' x '.$p->quantidade2.'</td>';; 
                                             }else{
                                                echo '<td>'.$p->descricao.'</td>';
@@ -157,7 +157,7 @@
                    
                     <h5 style="text-align: right" >Condições de Pagamento: 1/30/60/90 ou 5% à vista</h5>
                     </br>
-                    <h5 style="text-align: center" >Granitos, Mármores e Pedras em geral por sua própria natureza estão sujeitos a variações de cores, veios e desenhos, não podendo ser recusados pelas diferenças naturais</h5>
+                    <h5 style="text-align: center" ><b><font color = "red">Granitos, Mármores e Pedras em geral por sua própria natureza estão sujeitos a variações de cores, veios e desenhos, não podendo ser recusados pelas diferenças naturais</font></b></h5>
 
             
 

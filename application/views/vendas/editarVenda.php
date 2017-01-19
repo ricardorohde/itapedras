@@ -45,10 +45,15 @@
                                             <input id="usuarios_id" class="span12" type="hidden" name="usuarios_id" value="<?php echo $result->usuarios_id ?>"  />
                                         </div>
                                         
+                                            
+                                        
                                     </div>
-                                    
-                                    
-                                   
+                                <div class="span12" style="padding: 1%; margin-left: 0">
+                                   <div class="span6">
+                                            <label for="obs">Observação</label>
+                                            <textarea id="obs" class="span12" name="obs" cols="30" rows="5"><?php echo $result->obs ?></textarea>
+                                        </div>
+                                </div>
                                    
                                     <div class="span12" style="padding: 1%; margin-left: 0">
             
