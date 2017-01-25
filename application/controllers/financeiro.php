@@ -336,6 +336,10 @@ class Financeiro extends CI_Controller {
 
             $vencimento = $this->input->post('vencimento');
             $pagamento = $this->input->post('pagamento');
+            $dataparcela1 = $this->input->post('dataparcela1');
+            $dataparcela2 = $this->input->post('dataparcela2');
+            $dataparcela3 = $this->input->post('dataparcela3');
+            $dataparcela4 = $this->input->post('dataparcela4');
 
             try {
                 
@@ -344,6 +348,19 @@ class Financeiro extends CI_Controller {
 
                 $pagamento = explode('/', $pagamento);
                 $pagamento = $pagamento[2].'-'.$pagamento[1].'-'.$pagamento[0];
+                
+                $dataparcela1 = explode('/', $dataparcela1);
+                $dataparcela1 = $dataparcela1[2].'-'.$dataparcela1[1].'-'.$dataparcela1[0];
+                
+                $dataparcela2 = explode('/', $dataparcela2);
+                $dataparcela2 = $dataparcela2[2].'-'.$dataparcela2[1].'-'.$dataparcela2[0];
+                
+                $dataparcela3 = explode('/', $dataparcela3);
+                $dataparcela3 = $dataparcela3[2].'-'.$dataparcela3[1].'-'.$dataparcela3[0];
+                
+                $dataparcela4 = explode('/', $dataparcela4);
+                $dataparcela4 = $dataparcela4[2].'-'.$dataparcela4[1].'-'.$dataparcela4[0];
+                
 
             } catch (Exception $e) {
                $vencimento = date('Y/m/d'); 
@@ -357,7 +374,15 @@ class Financeiro extends CI_Controller {
                 'baixado' => $this->input->post('pago'),
                 'cliente_fornecedor' => $this->input->post('fornecedor'),
                 'forma_pgto' => $this->input->post('formaPgto'),
-                'tipo' => $this->input->post('tipo')
+                'tipo' => $this->input->post('tipo'),
+                'parcela1' => $this->input->post('parcela1'),
+                'parcela2' => $this->input->post('parcela2'),
+                'parcela3' => $this->input->post('parcela3'),
+                'parcela4' => $this->input->post('parcela4'),
+                'dataparcela1' => $dataparcela1,
+                'dataparcela2' => $dataparcela2,
+                'dataparcela3' => $dataparcela3,
+                'dataparcela4' => $dataparcela4
             );
 
             if ($this->financeiro_model->edit('lancamentos',$data,'idLancamentos',$this->input->post('id')) == TRUE) {
@@ -380,7 +405,15 @@ class Financeiro extends CI_Controller {
                 'baixado' => $this->input->post('pago'),
                 'cliente_fornecedor' => set_value('fornecedor'),
                 'forma_pgto' => $this->input->post('formaPgto'),
-                'tipo' => $this->input->post('tipo')
+                'tipo' => $this->input->post('tipo'),
+                'parcela1' => $this->input->post('parcela1'),
+                'parcela2' => $this->input->post('parcela2'),
+                'parcela3' => $this->input->post('parcela3'),
+                'parcela4' => $this->input->post('parcela4'),
+                'dataparcela1' => $this->input->post('dataparcela1'),
+                'dataparcela2' => $this->input->post('dataparcela2'),
+                'dataparcela3' => $this->input->post('dataparcela3'),
+                'dataparcela4' => $this->input->post('dataparcela4')
             );
         print_r($data);
 
