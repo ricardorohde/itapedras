@@ -183,7 +183,7 @@ class Financeiro extends CI_Controller {
         $config['next_tag_close'] = '</li>';	
         $this->pagination->initialize($config); 	
 
-		$this->data['results'] = $this->financeiro_model->get('lancamentos','idLancamentos,descricao,valor,data_vencimento,data_pagamento,baixado,cliente_fornecedor,tipo,forma_pgto',$where,$config['per_page'],$this->uri->segment(3));
+		$this->data['results'] = $this->financeiro_model->get('lancamentos','idLancamentos,descricao,valor,data_vencimento,data_pagamento,baixado,cliente_fornecedor,tipo,forma_pgto,parcela1,parcela2,parcela3,parcela4,dataparcela1,dataparcela2,dataparcela3,dataparcela4',$where,$config['per_page'],$this->uri->segment(3));
        
 	    $this->data['view'] = 'financeiro/lancamentos';
        	$this->load->view('tema/topo',$this->data);
@@ -349,21 +349,41 @@ class Financeiro extends CI_Controller {
                 $pagamento = explode('/', $pagamento);
                 $pagamento = $pagamento[2].'-'.$pagamento[1].'-'.$pagamento[0];
                 
-                $dataparcela1 = explode('/', $dataparcela1);
-                $dataparcela1 = $dataparcela1[2].'-'.$dataparcela1[1].'-'.$dataparcela1[0];
+                if($dataparcela1){
+                    $dataparcela1 = explode('/', $dataparcela1);
+                    $dataparcela1 = $dataparcela1[2].'-'.$dataparcela1[1].'-'.$dataparcela1[0];
+                }else{
+                    $dataparcela1 = $vencimento;
+                }
                 
-                $dataparcela2 = explode('/', $dataparcela2);
-                $dataparcela2 = $dataparcela2[2].'-'.$dataparcela2[1].'-'.$dataparcela2[0];
+                if($dataparcela2){
+                    $dataparcela2 = explode('/', $dataparcela2);
+                    $dataparcela2 = $dataparcela2[2].'-'.$dataparcela2[1].'-'.$dataparcela2[0];
+                }else{
+                    $dataparcela2 = date('Y/m/d');
+                }
                 
-                $dataparcela3 = explode('/', $dataparcela3);
-                $dataparcela3 = $dataparcela3[2].'-'.$dataparcela3[1].'-'.$dataparcela3[0];
+                if($dataparcela3){
+                    $dataparcela3 = explode('/', $dataparcela3);
+                    $dataparcela3 = $dataparcela3[2].'-'.$dataparcela3[1].'-'.$dataparcela3[0];
+                }else{
+                    $dataparcela3 = date('Y/m/d');
+                }
                 
-                $dataparcela4 = explode('/', $dataparcela4);
-                $dataparcela4 = $dataparcela4[2].'-'.$dataparcela4[1].'-'.$dataparcela4[0];
+                if($dataparcela4){
+                    $dataparcela4 = explode('/', $dataparcela4);
+                    $dataparcela4 = $dataparcela4[2].'-'.$dataparcela4[1].'-'.$dataparcela4[0];
+                }else{
+                    $dataparcela4 = date('Y/m/d');
+                }
                 
 
             } catch (Exception $e) {
                $vencimento = date('Y/m/d'); 
+               $dataparcela1 = date('Y/m/d');
+               $dataparcela2 = date('Y/m/d');
+               $dataparcela3 = date('Y/m/d');
+               $dataparcela4 = date('Y/m/d');
             }
 
             $data = array(
